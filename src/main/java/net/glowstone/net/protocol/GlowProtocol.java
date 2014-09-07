@@ -115,8 +115,7 @@ public abstract class GlowProtocol extends AbstractProtocol {
 		case 6: return false; //PlayerPositionLookCodec (Looking Around periodcic)
 		case 10: return false; //Player SwingArmCodec (Left click, player swings arm)
 		case 11: return false; //PlayerActionCodec (sprint sneak)
-		
 		}
-		return false;
+		return true;
 	}
 }
