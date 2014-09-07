@@ -65,4 +65,20 @@ public final class CodecsHandler extends MessageToMessageCodec<ByteBuf, Message>
 
         out.add(decoded);
     }
+    
+    public boolean LogWritePacket(int opcode)
+    {
+    	//ignore these packets
+    	switch(opcode){
+    	case 1: return false; //StatusPingCodec
+    	case 3: return false; //TimMessage (Day/Night)
+    	case 33: return false; //ChunkDataMessage
+    	case 38: return false; //ChunkBulkMessage
+    	}
+    	
+    	//Log the packet to console
+    	return true;
+    }
+    
+    
 }
