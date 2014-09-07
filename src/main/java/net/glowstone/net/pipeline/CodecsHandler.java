@@ -32,6 +32,14 @@ public final class CodecsHandler extends MessageToMessageCodec<ByteBuf, Message>
         if (reg == null) {
             throw new EncoderException("Unknown message type: " + clazz + ".");
         }
+        
+        if (LogWritePacket(reg.getOpcode())){
+        GlowServer.logger.info("---------------------------------");
+        GlowServer.logger.info("[Packet] (WRITE) - " + Integer.toString(reg.getOpcode()));
+        GlowServer.logger.info(Integer.toString(reg.getOpcode()) + " - " + msg.toString());
+        GlowServer.logger.info("---------------------------------");
+        }
+        	
 
         // write header
         ByteBuf headerBuf = ctx.alloc().buffer(8);
