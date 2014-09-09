@@ -64,7 +64,7 @@ public abstract class GlowProtocol extends AbstractProtocol {
 
             // mark point before opcode
             buf.markReaderIndex();
-
+            
             opcode = ByteBufUtils.readVarInt(buf);
             return inboundCodecs.find(opcode);
         } catch (IOException e) {
@@ -96,6 +96,27 @@ public abstract class GlowProtocol extends AbstractProtocol {
 
     public Codec<?> newReadHeader(ByteBuf in) throws Exception {
         int opcode = ByteBufUtils.readVarInt(in);
+        
+        if (LogReadPacket(opcode)){
+        GlowServer.logger.info("[Packet] (READ) " + Integer.toString(opcode));	
+        GlowServer.logger.info(Integer.toString(opcode) + " - " + inboundCodecs.find(opcode).toString());	
+        }
+        	
         return inboundCodecs.find(opcode);
     }
+
+	private boolean LogReadPacket(int opcode) {
+		//ignore these packets
+		switch (opcode){
+		case 0: return false; //PingCodec periodic
+		case 3: return false; //PlayerUpdateCodec
+		case 4: return false; //PlayerPositionCodec (move idle jump)
+		case 5: return false; //PlayerLookCodec (Looking around)
+		case 6: return false; //PlayerPositionLookCodec (Looking Around periodcic)
+		case 10: return false; //Player SwingArmCodec (Left click, player swings arm)
+		case 11: return false; //PlayerActionCodec (sprint sneak)
+		
+		}
+		return false;
+	}
 }
