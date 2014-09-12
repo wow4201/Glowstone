@@ -398,7 +398,7 @@ public final class GlowPlayer extends GlowHumanEntity implements Player {
         for (Iterator<GlowEntity> it = knownEntities.iterator(); it.hasNext(); ) {
             GlowEntity entity = it.next();
             boolean withinDistance = !entity.isDead() && isWithinDistance(entity);
-
+            
             if (withinDistance) {
                 for (Message msg : entity.createUpdateMessage()) {
                     session.send(msg);
