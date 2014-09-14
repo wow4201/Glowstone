@@ -26,7 +26,8 @@ public final class BlockPlacementHandler implements MessageHandler<GlowSession, 
     private enum ItemPlaceResult {
         BLOCK, ITEM_FRAME
     }
-    
+
+    @Override
     public void handle(GlowSession session, BlockPlacementMessage message) {
         final GlowPlayer player = session.getPlayer();
         if (player == null)

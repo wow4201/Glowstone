@@ -12,7 +12,6 @@ import net.glowstone.net.message.play.player.InteractEntityMessage;
 public final class InteractEntityHandler implements MessageHandler<GlowSession, InteractEntityMessage> {
     @Override
     public void handle(GlowSession session, InteractEntityMessage message) {
-       
     	final GlowPlayer player = session.getPlayer();
         if (player == null)
             return;

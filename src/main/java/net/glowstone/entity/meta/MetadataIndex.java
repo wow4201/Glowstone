@@ -97,7 +97,7 @@ public enum MetadataIndex {
 
     ITEM_FRAME_ITEM(8, ITEM, ItemFrame.class),
     ITEM_FRAME_ROTATION(9, BYTE, ItemFrame.class),
-    
+
     ENDER_CRYSTAL_HEALTH(8, INT, EnderCrystal.class),
     ;
 
