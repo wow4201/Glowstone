@@ -120,7 +120,7 @@ public final class BlockPlacementHandler implements MessageHandler<GlowSession, 
             } else {
             	switch (TypeonPlaceItem(holding.getType())){
                 case ITEM_FRAME:
-        	        new GlowItemFrame(player, clicked.getLocation(), face, false);
+        	        new GlowItemFrame(player, clicked.getLocation(), face);
         	        break;
                 case BLOCK:
                 type.rightClickBlock(player, clicked, face, holding, clickedLoc);

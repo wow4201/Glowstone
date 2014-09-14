@@ -14,7 +14,7 @@ class ItemFrameStore extends EntityStore<GlowItemFrame> {
 
     public GlowItemFrame createEntity(Location location, CompoundTag compound) {
         // item frame will be set by loading code below
-        return new GlowItemFrame(null, location, null, true);
+        return new GlowItemFrame(null, location, null);
     }
 
     @Override
